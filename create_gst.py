@@ -111,7 +111,7 @@ def create_entry(song):
     max_diff = song[4]
     bpm = song[5]
     release_date = song[6]
-    folder_path = f'{data_path}/music/{track_no}_{file_prefix}'
+    folder_path = f'{data_path}/music/{track_no}_{file_prefix}'.replace('\\', '/')
     jacket_file_name = f'{folder_path}/jk_{track_no}_{max_diff}_b.png'
     ffmpeg_command = f'ffmpeg -i {folder_path}/{track_no}_{file_prefix}.s3v {encoder_options} -nostdin "{gst_path}/{track_no} - {sanitized_title}.mp3"'
     subprocess.run(shlex.split(ffmpeg_command))
